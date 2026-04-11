@@ -1,868 +1,539 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Método Persaltum – Dejá de adivinar cómo vender online</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Presentación del Método Persaltum, donde te explico paso a paso cómo crear y automatizar tu negocio digital con un sistema simple y probado."
-  />
-  <style>
-    :root {
-      --bg-main: #050509;
-      --bg-card: #111117;
-      --accent-gold: #f5c45b;
-      --accent-gold-soft: rgba(245, 196, 91, 0.2);
-      --text-main: #f8f8ff;
-      --text-muted: #b3b3c2;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test del Conocimiento Rentable | Persaltum</title>
+<meta name="description" content="4 preguntas para descubrir si lo que sabes puede generarte ingresos digitales. Test gratuito de 5 minutos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--gold:#B8972E;--gold-bright:#C9A84C;--gold-dark:#8A7232;--gold-pale:#F5EED9;
+--dark:#1A1A1A;--dark2:#2A2A2A;--text:#333;--text-dim:#555;--text-light:#888;
+--bg:#FDFBF5;--bg2:#F7F2E8;--white:#FFF;--border:#E5DDD0;
+--green:#27AE60;--red:#C0392B;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+.container{max-width:620px;margin:0 auto;padding:0 20px}
+.text-center{text-align:center}
+
+/* HEADER */
+.header{text-align:center;padding:24px 0 0}
+.header .brand{font-weight:700;font-size:13px;letter-spacing:3px;color:var(–gold)}
+
+/* HERO */
+.hero{text-align:center;padding:30px 20px 20px}
+.hero-badge{display:inline-block;padding:6px 18px;border:1.5px solid var(–gold);border-radius:100px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(–gold-dark);margin-bottom:20px}
+.hero h1{font-family:‘Playfair Display’,serif;font-size:clamp(28px,6vw,42px);font-weight:800;color:var(–dark);line-height:1.2;margin-bottom:12px}
+.hero h1 em{color:var(–gold);font-style:italic}
+.hero .lead{font-size:16px;color:var(–text-dim);max-width:480px;margin:0 auto 20px;line-height:1.6}
+.hero .time{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:var(–bg2);border:1px solid var(–border);border-radius:100px;font-size:13px;font-weight:500;color:var(–text-dim)}
+
+/* PROGRESS */
+.progress-wrap{max-width:620px;margin:24px auto 0;padding:0 20px}
+.progress-bar-bg{height:6px;background:var(–border);border-radius:3px;overflow:hidden}
+.progress-bar-fill{height:100%;background:var(–gold);border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%}
+.progress-label{font-size:12px;color:var(–text-light);margin-top:6px;text-align:right}
+
+/* SECTIONS - show/hide */
+.section{display:none;padding:30px 0 40px;animation:fadeUp .5s ease}
+.section.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+/* QUESTION CARD */
+.q-card{background:var(–white);border:1px solid var(–border);border-radius:16px;padding:32px 28px;box-shadow:0 4px 20px rgba(0,0,0,.04);text-align:center;max-width:580px;margin:0 auto}
+.q-num{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(–gold);margin-bottom:4px}
+.q-big-num{font-family:‘Playfair Display’,serif;font-size:52px;font-weight:800;color:var(–gold);line-height:1;margin-bottom:8px}
+.q-divider{width:50px;height:3px;background:var(–gold);margin:0 auto 16px;border-radius:2px}
+.q-title{font-family:‘Playfair Display’,serif;font-size:clamp(20px,4vw,26px);font-weight:700;color:var(–dark);line-height:1.3;margin-bottom:14px}
+.q-desc{font-size:14px;color:var(–text-dim);line-height:1.6;margin-bottom:20px;max-width:460px;margin-left:auto;margin-right:auto}
+.q-tip{font-size:13px;color:var(–text-dim);background:var(–gold-pale);border-left:3px solid var(–gold);padding:10px 14px;border-radius:0 8px 8px 0;text-align:left;margin-bottom:20px;line-height:1.5}
+.q-tip b{color:var(–gold-dark)}
+
+/* ANSWER OPTIONS */
+.options{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.option{
+display:flex;align-items:center;gap:12px;padding:14px 18px;
+background:var(–bg);border:2px solid var(–border);border-radius:12px;
+cursor:pointer;transition:all .2s ease;text-align:left;
+}
+.option:hover{border-color:var(–gold);background:var(–gold-pale)}
+.option.selected{border-color:var(–gold);background:var(–gold-pale)}
+.option .radio{
+width:22px;height:22px;border-radius:50%;border:2px solid var(–border);
+flex-shrink:0;display:flex;align-items:center;justify-content:center;
+transition:all .2s ease;
+}
+.option.selected .radio{border-color:var(–gold);background:var(–gold)}
+.option.selected .radio::after{content:’’;width:8px;height:8px;background:var(–white);border-radius:50%}
+.option .text{font-size:15px;color:var(–dark);line-height:1.4}
+
+/* NEXT BUTTON */
+.btn-next{
+display:block;width:100%;max-width:400px;margin:24px auto 0;padding:16px;
+background:var(–dark);border:none;border-radius:12px;
+color:var(–white);font-family:‘DM Sans’,sans-serif;font-size:16px;font-weight:700;
+cursor:pointer;transition:all .3s ease;opacity:.4;pointer-events:none;
+}
+.btn-next.enabled{opacity:1;pointer-events:all}
+.btn-next.enabled:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
+
+/* EMAIL GATE */
+.email-gate{text-align:center;max-width:480px;margin:0 auto}
+.email-gate h2{font-family:‘Playfair Display’,serif;font-size:28px;color:var(–dark);margin-bottom:8px}
+.email-gate .sub{font-size:15px;color:var(–text-dim);margin-bottom:24px;line-height:1.6}
+.email-gate .score-preview{
+display:inline-block;padding:16px 32px;background:var(–gold-pale);
+border:2px solid var(–gold);border-radius:14px;margin-bottom:24px;
+}
+.email-gate .score-preview .label{font-size:13px;color:var(–gold-dark);margin-bottom:4px}
+.email-gate .score-preview .score{font-family:‘Playfair Display’,serif;font-size:36px;font-weight:800;color:var(–gold)}
+.email-gate .form-group{margin-bottom:14px;text-align:left}
+.email-gate label{display:block;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(–gold-dark);margin-bottom:6px}
+.email-gate input{
+width:100%;padding:14px 16px;background:var(–bg);border:1.5px solid var(–border);
+border-radius:10px;color:var(–dark);font-family:‘DM Sans’,sans-serif;font-size:16px;outline:none;
+transition:border-color .3s,box-shadow .3s;
+}
+.email-gate input:focus{border-color:var(–gold);box-shadow:0 0 0 3px rgba(184,151,46,.12)}
+.email-gate input::placeholder{color:#AAA}
+.btn-results{
+display:block;width:100%;padding:16px;margin-top:8px;
+background:var(–dark);border:none;border-radius:12px;
+color:var(–white);font-family:‘DM Sans’,sans-serif;font-size:16px;font-weight:700;
+cursor:pointer;transition:all .3s ease;
+}
+.btn-results:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.btn-results .gold{color:var(–gold-bright)}
+.email-note{font-size:12px;color:var(–text-light);margin-top:10px}
+
+/* RESULTS */
+.results{text-align:center;max-width:540px;margin:0 auto}
+.results .emoji{font-size:48px;margin-bottom:12px}
+.results h2{font-family:‘Playfair Display’,serif;font-size:28px;color:var(–dark);margin-bottom:6px}
+.results .score-final{font-family:‘Playfair Display’,serif;font-size:42px;font-weight:800;color:var(–gold);margin-bottom:16px}
+.result-box{
+background:var(–white);border:2px solid var(–gold);border-radius:14px;
+padding:24px 20px;margin-bottom:20px;text-align:left;
+}
+.result-box h3{font-size:16px;font-weight:700;color:var(–dark);margin-bottom:8px}
+.result-box p{font-size:14px;color:var(–text-dim);line-height:1.6}
+.result-box .verdict{font-size:15px;font-weight:700;margin-top:10px}
+.result-box .verdict.green{color:var(–green)}
+.result-box .verdict.gold{color:var(–gold)}
+.result-box .verdict.orange{color:#E67E22}
+
+.next-step{
+background:var(–dark);border-radius:14px;padding:28px 24px;
+text-align:center;margin-top:24px;
+}
+.next-step h3{font-family:‘Playfair Display’,serif;font-size:20px;color:var(–white);margin-bottom:8px}
+.next-step p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:16px}
+.next-step .items{text-align:left;margin-bottom:16px}
+.next-step .item{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:13px;color:rgba(255,255,255,.8)}
+.next-step .check{color:var(–gold-bright);font-weight:700;font-size:15px;flex-shrink:0}
+.btn-cta{
+display:block;width:100%;padding:16px;
+background:var(–gold-bright);border:none;border-radius:12px;
+color:var(–dark);font-family:‘DM Sans’,sans-serif;font-size:16px;font-weight:700;
+cursor:pointer;transition:all .3s ease;text-decoration:none;text-align:center;
+}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,168,76,.3)}
+.btn-wa{
+display:inline-flex;align-items:center;gap:8px;margin-top:16px;
+padding:12px 24px;background:#25D366;border-radius:10px;
+color:white;font-weight:700;font-size:14px;text-decoration:none;transition:all .3s ease;
+}
+.btn-wa:hover{transform:translateY(-2px)}
+
+/* FOOTER */
+footer{text-align:center;padding:30px 20px;border-top:1px solid var(–border);margin-top:20px}
+footer .brand{font-weight:700;font-size:13px;letter-spacing:3px;color:var(–gold);margin-bottom:4px}
+footer .sub{font-size:12px;color:var(–text-light)}
+footer a{color:var(–gold-dark);text-decoration:none}
+
+@media(max-width:480px){
+.q-card{padding:24px 18px}
+.option{padding:12px 14px}
+}
+</style>
 
-      --stripe: #635bff;
-      --hotmart: #ff5c00;
-      --mercadopago: #00b1ea;
-      --whatsapp: #25d366;
-
-      --radius-xl: 18px;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #171727 0, #050509 55%, #020208 100%);
-      color: var(--text-main);
-      line-height: 1.5;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 24px 16px 64px;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
-      gap: 12px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      border: 1px solid var(--accent-gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--accent-gold);
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .logo-text span:first-child {
-      font-weight: 600;
-    }
-
-    .logo-text span:last-child {
-      color: var(--text-muted);
-      font-size: 11px;
-    }
-
-    .header-tagline {
-      font-size: 12px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    /* HERO */
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-      gap: 28px;
-      align-items: center;
-      margin-bottom: 32px;
-    }
-
-    .eyebrow {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--accent-gold);
-      margin-bottom: 10px;
-    }
-
-    .hero-title {
-      font-size: 30px;
-      line-height: 1.1;
-      margin-bottom: 12px;
-    }
-
-    .hero-title span.highlight {
-      color: var(--accent-gold);
-    }
-
-    .hero-subtitle {
-      font-size: 14px;
-      color: var(--text-muted);
-      max-width: 480px;
-      margin-bottom: 16px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--accent-gold-soft);
-      background: rgba(5, 5, 12, 0.9);
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-
-    .hero-badge span.dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent-gold);
-    }
-
-    .price-card {
-      background: rgba(10, 10, 18, 0.9);
-      border-radius: var(--radius-xl);
-      padding: 14px 14px 16px;
-      border: 1px solid rgba(245, 196, 91, 0.22);
-      box-shadow: var(--shadow-soft);
-      margin-bottom: 12px;
-    }
-
-    .price-row {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .price-main {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-    }
-
-    .price-main span.currency {
-      font-size: 16px;
-      opacity: 0.8;
-    }
-
-    .price-main span.amount {
-      font-size: 26px;
-      font-weight: 700;
-    }
-
-    .price-main span.once {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .price-tagline {
-      font-size: 11px;
-      color: var(--accent-gold);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .price-extra {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .hero-list {
-      list-style: none;
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
-
-    .hero-list li {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-
-    .hero-list li span.bullet {
-      width: 14px;
-      height: 14px;
-      border-radius: 999px;
-      border: 1px solid var(--accent-gold-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      color: var(--accent-gold);
-    }
-
-    .hero-ctas {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .cta-row-label {
-      font-size: 11px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 4px;
-    }
-
-    .payment-buttons {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-    }
-
-    .btn {
-      border-radius: 999px;
-      padding: 9px 12px;
-      font-size: 13px;
-      font-weight: 600;
-      text-align: center;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
-      white-space: nowrap;
-    }
-
-    .btn span.sub {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      opacity: 0.8;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.45);
-    }
-
-    .btn:active {
-      transform: translateY(0);
-      box-shadow: none;
-      opacity: 0.9;
-    }
-
-    .btn-stripe {
-      background: var(--stripe);
-      color: #ffffff;
-    }
-
-    .btn-hotmart {
-      background: var(--hotmart);
-      color: #ffffff;
-    }
-
-    .btn-mercadopago {
-      background: var(--mercadopago);
-      color: #ffffff;
-    }
-
-    .hero-note {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .hero-note strong {
-      color: var(--accent-gold);
-      font-weight: 500;
-    }
-
-    /* VIDEO */
-
-    .hero-video-card {
-      background: rgba(8, 8, 15, 0.9);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(245, 196, 91, 0.15);
-      padding: 10px;
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-video-tag {
-      position: absolute;
-      top: 10px;
-      left: 12px;
-      font-size: 10px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.55);
-      border: 1px solid rgba(245, 196, 91, 0.35);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .video-wrapper {
-      position: relative;
-      padding-top: 56.25%; /* 16:9 */
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    .video-wrapper iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .video-caption {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 8px;
-    }
-
-    .video-caption span.highlight {
-      color: var(--accent-gold);
-    }
-
-    /* SECTION WRAPPER */
-
-    section {
-      margin-top: 30px;
-    }
-
-    .section-card {
-      background: var(--bg-card);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      padding: 18px 16px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .section-title {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .section-subtitle {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 18px;
-    }
-
-    .check-list {
-      list-style: none;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .check-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-
-    .check {
-      width: 16px;
-      height: 16px;
-      border-radius: 999px;
-      border: 1px solid var(--accent-gold-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      color: var(--accent-gold);
-      flex-shrink: 0;
-    }
-
-    .pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-
-    .pill {
-      font-size: 11px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(245, 196, 91, 0.25);
-      background: rgba(245, 196, 91, 0.06);
-      color: var(--text-muted);
-    }
-
-    .quote-block {
-      font-size: 12px;
-      color: var(--text-muted);
-      border-left: 2px solid rgba(245, 196, 91, 0.4);
-      padding-left: 10px;
-      margin-top: 8px;
-    }
-
-    .quote-block strong {
-      color: var(--accent-gold);
-    }
-
-    /* FAQ */
-
-    .faq-list {
-      display: grid;
-      gap: 10px;
-      font-size: 13px;
-    }
-
-    .faq-item {
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 10px 12px;
-      background: rgba(8, 8, 15, 0.9);
-    }
-
-    .faq-q {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .faq-a {
-      color: var(--text-muted);
-    }
-
-    /* WHATSAPP / FOOTER */
-
-    .wa-card {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: flex-start;
-    }
-
-    .btn-wa {
-      background: var(--whatsapp);
-      color: #ffffff;
-    }
-
-    .btn-wa span.icon {
-      font-size: 15px;
-    }
-
-    footer {
-      margin-top: 28px;
-      font-size: 11px;
-      color: var(--text-muted);
-      text-align: center;
-      opacity: 0.75;
-    }
-
-    footer span.brand {
-      color: var(--accent-gold);
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 880px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-video-card {
-        order: -1;
-      }
-
-      .payment-buttons {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero-title {
-        font-size: 24px;
-      }
-
-      .page {
-        padding-inline: 14px;
-      }
-    }
-  </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="logo">
-        <div class="logo-mark">P</div>
-        <div class="logo-text">
-          <span>Persaltum</span>
-          <span>Método para vender online</span>
-        </div>
-      </div>
-      <div class="header-tagline">
-        Dejá de adivinar cómo vender online
-      </div>
-    </header>
 
-    <!-- HERO -->
-    <main>
-      <section class="hero">
-        <div>
-          <div class="eyebrow">Presentación del Método Persaltum</div>
-          <h1 class="hero-title">
-            Donde te explico <span class="highlight">paso a paso</span> cómo crear y automatizar tu negocio digital.
-          </h1>
-          <p class="hero-subtitle">
-            No necesitás ser influencer ni saber de tecnología. Solo necesitás un sistema simple que capte, eduque y venda por vos las 24 horas del día, aunque no estés conectado.
-          </p>
+<div class="header"><div class="brand">PERSALTUM</div></div>
 
-          <div class="hero-badge">
-            <span class="dot"></span>
-            <span>PDF estratégico + video explicativo paso a paso</span>
-          </div>
+<!-- ═══ HERO ═══ -->
 
-          <div class="price-card">
-            <div class="price-row">
-              <div class="price-main">
-                <span class="currency">USD</span>
-                <span class="amount">37</span>
-                <span class="once">pago único</span>
-              </div>
-              <div class="price-tagline">
-                Lanzamiento promocional limitado
-              </div>
-            </div>
-            <div class="price-extra">
-              Acceso inmediato al PDF del Método Persaltum + clase explicativa donde te muestro el sistema completo para dejar de improvisar y empezar a vender con método.
-            </div>
-          </div>
+<div class="section active" id="sec-hero">
+<div class="hero">
+<div class="hero-badge">Test Gratuito</div>
+<h1>¿Tu conocimiento puede generarte <em>ingresos digitales</em>?</h1>
+<p class="lead">4 preguntas. 5 minutos. Al final sabrás exactamente qué potencial tiene lo que sabes y cuál es tu siguiente paso.</p>
+<div class="time">⏱ Tiempo: 5 minutos</div>
+<br><br>
+<button class="btn-next enabled" onclick="startTest()" style="max-width:380px">EMPEZAR EL TEST →</button>
+<p style="font-size:12px;color:var(--text-light);margin-top:12px">+2,000 profesionales ya lo hicieron</p>
+</div>
+</div>
 
-          <ul class="hero-list">
-            <li>
-              <span class="bullet">✓</span>
-              <span>Guía estratégica en PDF del Método Persaltum.</span>
-            </li>
-            <li>
-              <span class="bullet">✓</span>
-              <span>Video explicativo donde ves, paso a paso, cómo crear y automatizar tu negocio digital.</span>
-            </li>
-            <li>
-              <span class="bullet">✓</span>
-              <span>Acceso inmediato después del pago, sin esperas ni procesos complicados.</span>
-            </li>
-          </ul>
+<!-- ═══ PROGRESS BAR ═══ -->
 
-          <div class="hero-ctas">
-            <div>
-              <div class="cta-row-label">Elegí tu forma de pago</div>
-              <div class="payment-buttons">
-                <!-- ⚠ REEMPLAZÁ ESTOS HREF CON TUS LINKS REALES DEL PRODUCTO PRINCIPAL -->
-                <a
-                  class="btn btn-stripe"
-                  href="https://buy.stripe.com/8x228q3HL8H14qx1OKbwk0n"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>Comprar con Stripe</span>
-                </a>
-                <a
-                  class="btn btn-hotmart"
-                  href="https://go.hotmart.com/V101694536F"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>Comprar en Hotmart</span>
-                  <span class="sub"></span>
-                </a>
-                <a
-                  class="btn btn-mercadopago"
-                  href="https://mpago.la/1dvcVva"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>Comprar con Mercado Pago</span>
-                </a>
-              </div>
-            </div>
-          </div>
+<div class="progress-wrap" id="progressWrap" style="display:none">
+<div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+<div class="progress-label" id="progressLabel">Pregunta 1 de 4</div>
+</div>
 
-          <div class="hero-note">
-            <strong>Importante:</strong> si pagás por Hotmart, antes de finalizar la compra vas a ver
-            opciones de productos adicionales para acelerar tus resultados (order bump y upsells). Podés
-            aceptarlos o no, el Método Persaltum sigue siendo tuyo igual.
-          </div>
-        </div>
+<!-- ═══ PREGUNTA 1 ═══ -->
 
-        <!-- VIDEO -->
-        <div class="hero-video-card">
-          <div class="hero-video-tag">VSL + clase explicativa</div>
-          <div class="video-wrapper">
-            <!-- ⚠ Reemplazá el src por el link de tu video en YouTube si cambiás -->
-            <iframe
-              src="https://youtu.be/SJCvhQZMuT4"
-              title="Presentación del Método Persaltum"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <div class="video-caption">
-            En este video, <span class="highlight">Pablo Galli</span> te muestra el mótivo de implementar un sistema para vender en redes. El Método Persaltum para dejar de improvisar y covertirte en infoproductor. Crea tu negocio digital y viví de tus conocimientos.
-          </div>
-        </div>
-      </section>
+<div class="section" id="sec-q1">
+<div class="container">
+<div class="q-card">
+<div class="q-num">Pregunta</div>
+<div class="q-big-num">1</div>
+<div class="q-divider"></div>
+<div class="q-title">¿Qué problema resuelves tantas veces que ya lo haces en piloto automático?</div>
+<div class="q-desc">Piensa en tu día a día profesional. Hay algo que la gente te consulta seguido, algo que resuelves con naturalidad, algo que para ti es "obvio" pero para otros es un misterio.</div>
+<div class="q-tip"><b>Tip:</b> Si 3 o más personas distintas te pidieron ayuda con el mismo tema, ahí hay un producto digital.</div>
+<div class="options" id="opts1">
+<div class="option" onclick="selectOption(1, this, 3)">
+<div class="radio"></div>
+<div class="text">Sí, varias personas me consultan seguido sobre lo mismo</div>
+</div>
+<div class="option" onclick="selectOption(1, this, 2)">
+<div class="radio"></div>
+<div class="text">Creo que sí, pero no estoy seguro de qué tema específico</div>
+</div>
+<div class="option" onclick="selectOption(1, this, 1)">
+<div class="radio"></div>
+<div class="text">No sabría identificar un tema puntual</div>
+</div>
+</div>
+<button class="btn-next" id="btn1" onclick="nextQ(2)">SIGUIENTE →</button>
+</div>
+</div>
+</div>
 
-      <!-- QUÉ INCLUYE -->
-      <section>
-        <div class="section-card">
-          <h2 class="section-title">¿Qué incluye el Método Persaltum en esta versión?</h2>
-          <p class="section-subtitle">
-            Esta no es una teoría más. Es el resumen estratégico de años de experiencia, pruebas reales y
-            miles de dólares invertidos en formación, condensados en un sistema simple de aplicar.
-          </p>
+<!-- ═══ PREGUNTA 2 ═══ -->
 
-          <div class="grid-2">
-            <div>
-              <ul class="check-list">
-                <li>
-                  <div class="check">✓</div>
-                  <div>
-                    <strong>PDF estratégico del Método Persaltum</strong><br />
-                    Un documento claro, directo y accionable donde ves el mapa completo del sistema: captación,
-                    contenido, automatización y venta.
-                  </div>
-                </li>
-                <li>
-                  <div class="check">✓</div>
-                  <div>
-                    <strong>Video explicativo paso a paso</strong><br />
-                    Una clase guiada donde te acompaño pantalla a pantalla para que entiendas cómo implementar
-                    el método en tu realidad.
-                  </div>
-                </li>
-                <li>
-                  <div class="check">✓</div>
-                  <div>
-                    <strong>Ruta simple para automatizar tu negocio digital</strong><br />
-                    Qué herramientas usar, cómo conectarlas entre sí y qué evitar para no perder tiempo ni dinero.
-                  </div>
-                </li>
-                <li>
-                  <div class="check">✓</div>
-                  <div>
-                    <strong>Enfoque sin tecnicismos</strong><br />
-                    Lenguaje claro, sin palabras raras ni conceptos vacíos. Lo que necesitás saber para vender,
-                    explicado como si estuviéramos hablando por WhatsApp.
-                  </div>
-                </li>
-              </ul>
-            </div>
+<div class="section" id="sec-q2">
+<div class="container">
+<div class="q-card">
+<div class="q-num">Pregunta</div>
+<div class="q-big-num">2</div>
+<div class="q-divider"></div>
+<div class="q-title">¿Puedes prometer una transformación concreta a tu cliente?</div>
+<div class="q-desc">La gente no compra información. Compra transformación. ¿Puedes definir un "antes" y un "después" claro para la persona que reciba tu conocimiento?</div>
+<div class="q-tip"><b>Ejemplo:</b> "Paso de no saber cómo facturar a tener su sistema armado en 3 días" o "Paso de publicar sin estrategia a tener un calendario de 30 días".</div>
+<div class="options" id="opts2">
+<div class="option" onclick="selectOption(2, this, 3)">
+<div class="radio"></div>
+<div class="text">Sí, tengo claro el antes y después que puedo generar</div>
+</div>
+<div class="option" onclick="selectOption(2, this, 2)">
+<div class="radio"></div>
+<div class="text">Tengo una idea pero necesito definirla mejor</div>
+</div>
+<div class="option" onclick="selectOption(2, this, 1)">
+<div class="radio"></div>
+<div class="text">No estoy seguro de qué transformación podría ofrecer</div>
+</div>
+</div>
+<button class="btn-next" id="btn2" onclick="nextQ(3)">SIGUIENTE →</button>
+</div>
+</div>
+</div>
 
-            <div>
-              <div class="quote-block">
-                <strong>Si te dijera que no podés fracasar, ¿cuán grande sería tu sueño?</strong><br />
-                El Método Persaltum está diseñado para que dejes de improvisar y empieces a construir una empresa
-                digital con base sólida, aunque hoy sientas que estás empezando de cero.
-              </div>
-              <div class="pill-list">
-                <div class="pill">Ideal si recién empezás</div>
-                <div class="pill">Sirve si ya vendés pero estás estancado</div>
-                <div class="pill">Aplicable a servicios, cursos y mentorías</div>
-                <div class="pill">Pensado para Latinoamérica y el mundo</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+<!-- ═══ PREGUNTA 3 ═══ -->
 
-      <!-- RESULTADOS -->
-      <section>
-        <div class="section-card">
-          <h2 class="section-title">¿Qué vas a lograr con este material?</h2>
-          <p class="section-subtitle">
-            El objetivo es que termines el PDF y la clase explicativa con claridad mental, foco y un plan simple
-            para avanzar, no con más dudas.
-          </p>
+<div class="section" id="sec-q3">
+<div class="container">
+<div class="q-card">
+<div class="q-num">Pregunta</div>
+<div class="q-big-num">3</div>
+<div class="q-divider"></div>
+<div class="q-title">¿Conoces el miedo o frustración principal de tu cliente ideal?</div>
+<div class="q-desc">Toda decisión de compra está impulsada por una emoción. ¿Sabes qué le quita el sueño a la persona que podrías ayudar?</div>
+<div class="q-tip"><b>Tip:</b> El miedo de tu cliente se convierte en el gancho de tu contenido. La frustración se convierte en el problema que tu producto resuelve.</div>
+<div class="options" id="opts3">
+<div class="option" onclick="selectOption(3, this, 3)">
+<div class="radio"></div>
+<div class="text">Sí, sé exactamente qué los frustra y qué les da miedo</div>
+</div>
+<div class="option" onclick="selectOption(3, this, 2)">
+<div class="radio"></div>
+<div class="text">Tengo una idea general pero no lo tengo claro del todo</div>
+</div>
+<div class="option" onclick="selectOption(3, this, 1)">
+<div class="radio"></div>
+<div class="text">No he pensado en eso todavía</div>
+</div>
+</div>
+<button class="btn-next" id="btn3" onclick="nextQ(4)">SIGUIENTE →</button>
+</div>
+</div>
+</div>
 
-          <ul class="check-list">
-            <li>
-              <div class="check">✓</div>
-              <div>Entender cuál es el modelo de negocio digital que mejor encaja con vos.</div>
-            </li>
-            <li>
-              <div class="check">✓</div>
-              <div>Ver, paso a paso, cómo funciona un sistema que capta, educa y vende por vos.</div>
-            </li>
-            <li>
-              <div class="check">✓</div>
-              <div>Dejar de improvisar contenido y empezar a comunicar con estrategia.</div>
-            </li>
-            <li>
-              <div class="check">✓</div>
-              <div>Saber qué herramientas usar (y cuáles evitar) para automatizar sin volverte loco.</div>
-            </li>
-            <li>
-              <div class="check">✓</div>
-              <div>Tener un primer mapa claro para escalar después a mentorías, cursos o una universidad digital.</div>
-            </li>
-          </ul>
-        </div>
-      </section>
+<!-- ═══ PREGUNTA 4 ═══ -->
 
-      <!-- FAQ + WHATSAPP -->
-      <section>
-        <div class="grid-2">
-          <div class="section-card">
-            <h2 class="section-title">Preguntas frecuentes</h2>
-            <div class="faq-list">
-              <div class="faq-item">
-                <div class="faq-q">¿Cuándo recibo el material?</div>
-                <div class="faq-a">
-                  El acceso es inmediato. Apenas se acredita el pago, recibís el PDF del Método Persaltum y el acceso
-                  al video explicativo en tu correo.
-                </div>
-              </div>
-              <div class="faq-item">
-                <div class="faq-q">¿Necesito experiencia previa en marketing o tecnología?</div>
-                <div class="faq-a">
-                  No. El material está pensado para que lo entienda alguien que recién empieza. Si ya tenés experiencia,
-                  te va a ayudar a ordenar y simplificar todo lo que venís haciendo.
-                </div>
-              </div>
-              <div class="faq-item">
-                <div class="faq-q">¿Qué pasa con los productos adicionales (upsells)?</div>
-                <div class="faq-a">
-                  Dentro del checkout de Hotmart vas a ver opciones extra (como los 4 mini cursos premium y otros
-                  materiales para acelerar tus resultados). Son opcionales. Podés aceptar o no, y seguirás teniendo el
-                  Método Persaltum igual.
-                </div>
-              </div>
-              <div class="faq-item">
-                <div class="faq-q">¿Qué pasa si tengo dudas después de comprar?</div>
-                <div class="faq-a">
-                  Podés entrar al grupo de WhatsApp exclusivo donde vas a recibir novedades, avisos de nuevas clases y
-                  lanzamientos futuros. Desde ahí también vas a saber cómo acceder a mentorías y programas más avanzados.
-                </div>
-              </div>
-            </div>
-          </div>
+<div class="section" id="sec-q4">
+<div class="container">
+<div class="q-card">
+<div class="q-num">Pregunta</div>
+<div class="q-big-num">4</div>
+<div class="q-divider"></div>
+<div class="q-title">¿Puedes garantizar un resultado tangible en 30 días o menos?</div>
+<div class="q-desc">La especificidad vende. "Vas a mejorar" no vende. "Vas a lograr X resultado en Y días" sí. ¿Cuál es el resultado mínimo que alguien puede lograr siguiendo tu método?</div>
+<div class="q-tip"><b>Tip:</b> Si no puedes medir el resultado, no puedes venderlo. "Sentirte mejor" no es medible. "Bajar 3 kilos", "conseguir 5 clientes", "crear tu primer producto digital" sí lo son.</div>
+<div class="options" id="opts4">
+<div class="option" onclick="selectOption(4, this, 3)">
+<div class="radio"></div>
+<div class="text">Sí, puedo prometer un resultado concreto y medible</div>
+</div>
+<div class="option" onclick="selectOption(4, this, 2)">
+<div class="radio"></div>
+<div class="text">Podría definir algo pero necesito pensarlo mejor</div>
+</div>
+<div class="option" onclick="selectOption(4, this, 1)">
+<div class="radio"></div>
+<div class="text">No sabría qué resultado específico prometer</div>
+</div>
+</div>
+<button class="btn-next" id="btn4" onclick="showEmailGate()">VER MIS RESULTADOS →</button>
+</div>
+</div>
+</div>
 
-          <div class="section-card wa-card">
-            <div>
-              <h2 class="section-title">Entrá al grupo silencioso de novedades</h2>
-              <p class="section-subtitle">
-                Te sumo a un grupo de WhatsApp donde solo vas a ver noticias, lanzamientos y avisos importantes del
-                Método Persaltum y la Universidad Digital del Infoproducto. Sin spam, sin mensajes de otros usuarios.
-              </p>
-            </div>
+<!-- ═══ EMAIL GATE ═══ -->
 
-            <a
-              class="btn btn-wa"
-              href="https://chat.whatsapp.com/Gg1xzEhj28vEJVSth0VLzG"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="icon">💬</span>
-              <span>Unirme al grupo de novedades</span>
-            </a>
+<div class="section" id="sec-email">
+<div class="container">
+<div class="email-gate">
+<div class="score-preview">
+<div class="label">Tu puntuación</div>
+<div class="score" id="scorePreview">—</div>
+</div>
+<h2>Tus resultados están listos</h2>
+<p class="sub">Ingresa tu email para ver tu diagnóstico personalizado, descubrir qué significa tu puntaje y recibir tu plan de acción recomendado.</p>
 
-            <p class="hero-note">
-              Solo admins pueden publicar. Es un canal para avisarte de nuevas clases, actualizaciones y oportunidades
-              especiales relacionadas con el Método Persaltum.
-            </p>
-          </div>
-        </div>
-      </section>
+```
+<div class="form-group">
+<label>Tu nombre</label>
+<input type="text" id="userName" placeholder="¿Cómo te llamas?" required>
+</div>
+<div class="form-group">
+<label>Tu email</label>
+<input type="email" id="userEmail" placeholder="tu@email.com" required>
+</div>
+<button class="btn-results" onclick="showResults()">VER MI DIAGNÓSTICO <span class="gold">→</span></button>
+<p class="email-note">🔒 Tu información está segura. Cero spam. Solo valor.</p>
+```
 
-      <!-- CTA FINAL -->
-      <section>
-        <div class="section-card">
-          <h2 class="section-title">Si te dijera que no podés fracasar, ¿cuán grande sería tu sueño?</h2>
-          <p class="section-subtitle">
-            Este es el primer paso: dejar de adivinar y empezar a usar un sistema que ya está probado. El resto lo vamos
-            a construir juntos, paso a paso.
-          </p>
+</div>
+</div>
+</div>
 
-          <div class="hero-ctas">
-            <div class="cta-row-label">Empezá ahora con el Método Persaltum</div>
-            <div class="payment-buttons">
-              <!-- MISMOS LINKS QUE ARRIBA: STRIPE / HOTMART / MP -->
-              <a
-                class="btn btn-stripe"
-                href="https://buy.stripe.com/8x228q3HL8H14qx1OKbwk0n"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>Comprar con Stripe</span>
-              </a>
-              <a
-                class="btn btn-hotmart"
-                href="https://go.hotmart.com/V101694536F"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>Comprar en Hotmart</span>
-                <span class="sub">con upsells</span>
-              </a>
-              <a
-                class="btn btn-mercadopago"
-                href="https://mpago.la/1dvcVva"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>Comprar con Mercado Pago</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+<!-- ═══ RESULTS ═══ -->
 
-    <footer>
-      <p>
-        <span class="brand">Persaltum</span> · Universidad Digital del Infoproducto · Todos los derechos reservados.
-      </p>
-    </footer>
-  </div>
+<div class="section" id="sec-results">
+<div class="container">
+<div class="results">
+<div class="emoji" id="resEmoji">🎯</div>
+<h2>Tu Diagnóstico</h2>
+<div class="score-final" id="scoreFinal">—/12</div>
+
+```
+<div class="result-box" id="resultBox">
+<h3 id="resTitle">—</h3>
+<p id="resDesc">—</p>
+<p class="verdict" id="resVerdict">—</p>
+</div>
+
+<div id="answersSummary"></div>
+
+<div class="next-step">
+<h3>Tu siguiente paso</h3>
+<p id="nextStepText">—</p>
+<div class="items">
+<div class="item"><span class="check">✓</span> Guía de 5 fases paso a paso</div>
+<div class="item"><span class="check">✓</span> 50 Prompts de IA para tu negocio</div>
+<div class="item"><span class="check">✓</span> Template de embudo de ventas</div>
+<div class="item"><span class="check">✓</span> 30 mensajes de WhatsApp listos</div>
+<div class="item"><span class="check">✓</span> Plan de acción de 7 días</div>
+</div>
+<a href="https://hotm.io/sistema2080" class="btn-cta">QUIERO EL SISTEMA 20/80 · USD 37</a>
+<p style="font-size:12px;color:rgba(255,255,255,.4);margin-top:10px">Un solo pago · Acceso inmediato · Garantía 30 días</p>
+</div>
+
+<p style="margin-top:24px;font-size:14px;color:var(--text-dim)">¿Dudas? Escríbeme directo:</p>
+<a href="https://wa.me/5491139322197?text=Hola%20Pablo!%20Hice%20el%20Test%20del%20Conocimiento%20Rentable%20y%20quiero%20que%20me%20ayudes" class="btn-wa" target="_blank">💬 WhatsApp</a>
+```
+
+</div>
+</div>
+</div>
+
+<footer>
+<p class="brand">PERSALTUM</p>
+<p class="sub">Universidad Digital del Infoproducto<br><a href="https://www.universidaddeproductosdigitales.com">universidaddeproductosdigitales.com</a></p>
+</footer>
+
+<script>
+let answers = {};
+let totalScore = 0;
+
+function startTest() {
+document.getElementById('sec-hero').classList.remove('active');
+document.getElementById('sec-q1').classList.add('active');
+document.getElementById('progressWrap').style.display = 'block';
+updateProgress(1);
+window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function selectOption(qNum, el, value) {
+// Deselect all in this question
+const opts = el.parentElement.children;
+for (let o of opts) o.classList.remove('selected');
+el.classList.add('selected');
+answers[qNum] = value;
+// Enable next button
+document.getElementById('btn' + qNum).classList.add('enabled');
+}
+
+function nextQ(next) {
+const prev = next - 1;
+if (!answers[prev]) return;
+document.getElementById('sec-q' + prev).classList.remove('active');
+document.getElementById('sec-q' + next).classList.add('active');
+updateProgress(next);
+window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function updateProgress(q) {
+const pct = (q / 4) * 100;
+document.getElementById('progressFill').style.width = pct + '%';
+document.getElementById('progressLabel').textContent = 'Pregunta ' + q + ' de 4';
+}
+
+function showEmailGate() {
+if (!answers[4]) return;
+totalScore = (answers[1] || 0) + (answers[2] || 0) + (answers[3] || 0) + (answers[4] || 0);
+document.getElementById('sec-q4').classList.remove('active');
+document.getElementById('sec-email').classList.add('active');
+document.getElementById('progressFill').style.width = '100%';
+document.getElementById('progressLabel').textContent = 'Test completado';
+document.getElementById('scorePreview').textContent = totalScore + '/12';
+window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function showResults() {
+const name = document.getElementById('userName').value.trim();
+const email = document.getElementById('userEmail').value.trim();
+
+if (!name || !email || !email.includes('@')) {
+alert('Por favor completa tu nombre y email para ver los resultados.');
+return;
+}
+
+// ENVIAR LEAD A TU EMAIL VIA FORMSPREE
+// ══════════════════════════════════════════
+// INSTRUCCIONES PARA PABLO:
+// 1. Ve a https://formspree.io y crea una cuenta gratis con tu email
+// 2. Haz clic en "+ New Form", ponle nombre "Test Persaltum"
+// 3. Formspree te dará un ID (ejemplo: xpzvkqwe)
+// 4. Reemplaza TU_FORMSPREE_ID abajo por ese ID
+// 5. Listo! Cada lead te llega a tu email
+// ══════════════════════════════════════════
+
+const FORMSPREE_ID = "mbdpnqwn"; // ✅ CONECTADO
+
+const scoreLabels = { 3: 'Claro', 2: 'En desarrollo', 1: 'Por definir' };
+const qNames = ['Problema que resuelve', 'Transformación', 'Cliente ideal', 'Resultado tangible'];
+
+let resumen = '';
+for (let i = 1; i <= 4; i++) {
+resumen += qNames[i-1] + ': ' + scoreLabels[answers[i]] + ' | ';
+}
+
+// Enviar a Formspree (llega a tu email)
+fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({
+nombre: name,
+email: email,
+puntaje: totalScore + '/12',
+respuestas: resumen,
+fecha: new Date().toLocaleString('es-AR'),
+_subject: '🎯 Nuevo lead del Test - ' + name + ' (' + totalScore + '/12)'
+})
+}).catch(err => console.log('Formspree error:', err));
+
+document.getElementById('sec-email').classList.remove('active');
+document.getElementById('sec-results').classList.add('active');
+document.getElementById('scoreFinal').textContent = totalScore + '/12';
+
+// Result logic
+let emoji, title, desc, verdict, verdictClass, nextStep;
+
+if (totalScore >= 10) {
+emoji = '🚀';
+title = '¡Tu conocimiento es ALTAMENTE rentable!';
+desc = 'Respondiste con claridad las 4 preguntas. Tienes un problema que resuelves, una transformación clara, conoces a tu cliente y puedes prometer un resultado concreto. Lo único que te falta es un SISTEMA para empaquetarlo y venderlo.';
+verdict = 'Estás listo para crear tu producto digital. Solo necesitas el cómo.';
+verdictClass = 'green';
+nextStep = 'El Sistema 20/80 te da el paso a paso completo para convertir ese conocimiento en un producto digital que se venda en automático en 7 días:';
+} else if (totalScore >= 7) {
+emoji = '💡';
+title = 'Tu conocimiento tiene GRAN potencial';
+desc = 'Tienes la base pero necesitas afinar algunos aspectos: quizás definir mejor tu transformación, conocer más a fondo a tu cliente ideal, o concretar tu promesa. Eso es exactamente lo que resuelven las Fases 1 y 2 del Sistema 20/80.';
+verdict = 'Estás más cerca de lo que crees. Solo necesitas claridad y un sistema.';
+verdictClass = 'gold';
+nextStep = 'El Sistema 20/80 te ayuda a definir tu nicho, tu transformación y crear tu producto digital paso a paso:';
+} else {
+emoji = '🌱';
+title = 'Tu conocimiento tiene potencial por descubrir';
+desc = 'No es que no tengas conocimiento valioso — es que nadie te enseñó a verlo como un producto. La mayoría de los profesionales está en este punto. La Fase 1 del Sistema 20/80 empieza exactamente aquí: ayudándote a descubrir qué sabes que otros pagarían por aprender.';
+verdict = 'El potencial está ahí. Solo necesitas el sistema para descubrirlo y activarlo.';
+verdictClass = 'orange';
+nextStep = 'El Sistema 20/80 empieza por ayudarte a identificar tu conocimiento rentable y convertirlo en un producto digital:';
+}
+
+document.getElementById('resEmoji').textContent = emoji;
+document.getElementById('resTitle').textContent = title;
+document.getElementById('resDesc').textContent = desc;
+document.getElementById('resVerdict').textContent = verdict;
+document.getElementById('resVerdict').className = 'verdict ' + verdictClass;
+document.getElementById('nextStepText').textContent = nextStep;
+
+// Show answer summary
+const qTitles = [
+'Problema que resuelves en automático',
+'Transformación concreta que prometes',
+'Miedo/frustración de tu cliente ideal',
+'Resultado tangible en 30 días'
+];
+const levels = { 3: '✅ Claro', 2: '🔶 En desarrollo', 1: '🔴 Por definir' };
+let html = '<div style="margin-top:16px;text-align:left">';
+html += '<h3 style="font-size:15px;color:var(--dark);margin-bottom:12px;text-align:center">Resumen de tus respuestas:</h3>';
+for (let i = 1; i <= 4; i++) {
+const v = answers[i] || 1;
+html += `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
+<span style="font-size:13px;color:var(--text)">${qTitles[i-1]}</span>
+<span style="font-size:13px;font-weight:700">${levels[v]}</span>
+</div>`;
+}
+html += '</div>';
+document.getElementById('answersSummary').innerHTML = html;
+
+window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
+
 </body>
 </html>
-
-
